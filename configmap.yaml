@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+mettadata:
+  name: nginx-conf
+data:
+  nginx.config: |
+
+    server{
+      listen 80;
+      index index.php index.html;
+      root /usr/share/nginx/html;
+
+      rewrite ^/google$ http://google.com permanent; #Habilita o redirecionamento para a página do google
+    }

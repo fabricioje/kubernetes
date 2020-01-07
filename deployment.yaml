@@ -3,6 +3,7 @@ kink: Deployment
 metadata: 
   name: hello-nginx
 spec: 
+  replicas: 3 #Define a quantidade de pods que será criado
   template: #configurações do pod
     metadata:
         labels: 
@@ -13,3 +14,16 @@ spec:
         image: nginx:1.17-alpine
         ports:
         - containerPort: 80
+
+        volumeMounts: #Configurações de montagem do volume
+        - mountPath: /etc/nginx/config.d #Caminho onde o volume será montando no container
+          name: nginx-conf #Nome do volume que será montado
+          readOnly: true #Somente leitura, não pode fazer alteração nesse volume
+      
+      volumes:
+      - name: nginx-conf
+        configMap:
+          name: nginx-conf
+          items:
+          - keys: nginx.conf
+            path: nginx.conf
