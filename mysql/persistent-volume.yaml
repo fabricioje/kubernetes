@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kink: PersistentVolumeClaim
+metadata: 
+  name: mysql-pv-claim
+spec: #Especificação do deployment
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
