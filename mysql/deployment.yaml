@@ -19,17 +19,22 @@ spec: #Especificação do deployment
     cotainers:
     - image: mysql:5.7
       name: mysql-server
+      args:
+        -"--ignore-db-dir=lost+found" #Comenado para ignorar o arquivo lost found
+      
       env: #Variáveis de ambiente
       - name: MYSQL_ROOT_PASSWORD
         value: root
+      
       ports: #Porta do container
       - containerPort: 3306
+      
       volumeMounts: #Monta o volume
       - name: mysql-persistent-storage
       mounthPath: /var/lib/mysql
     
 
-    volumes:
+    volumes: #definição do volume
     - name: mysql-persistent-storage
       persistentVolumeCalim:
         claimName: mysql-pdv-claim
