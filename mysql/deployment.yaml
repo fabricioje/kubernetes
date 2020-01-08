@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kink: Deployment
+metadata: 
+  name: mysql-server
+spec: #Especificação do deployment
+  replicas: 1
+
+  selector: #Selector utilizado para criar o service
+    matchLabels:
+      app: mysql-server
+      tier: db
+
+  template: #Referente ao pod
+   metadata: #Metadata utilizada nos pods
+    labels: 
+      app: mysql-server
+      tier: db
+  spec: #spec do pod
+    cotainers:
+    - image: mysql:5.7
+      name: mysql-server
+      env: #Variáveis de ambiente
+      - name: MYSQL_ROOT_PASSWORD
+        value: root
+      ports: #Porta do container
+      - containerPort: 3306
