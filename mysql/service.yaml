@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kink: Service
+metadata: 
+  name: mysql-service
+spec: #Especificação do service
+  ports:
+    - port: 3306
+  selector: #Selector utilizado para criar o service
+    app: mysql-server
+    tier: db
+  clusterP: Nome #Não deixa que seja acessado externamente
