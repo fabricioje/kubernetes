@@ -24,7 +24,10 @@ spec: #Especificação do deployment
       
       env: #Variáveis de ambiente
       - name: MYSQL_ROOT_PASSWORD
-        value: root
+        valueFrom: # Para usar a senha do mysql como secret, é necessário rodar o comando (kubectl create secret generic mysql-pass --from-literal=password='valor da senha')
+          secretKeyRef:
+            name: mysql-pass #Nome do secret
+            key: password #Valor do secret
       
       ports: #Porta do container
       - containerPort: 3306
