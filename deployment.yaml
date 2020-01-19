@@ -25,5 +25,5 @@ spec:
         configMap:
           name: nginx-conf #Nome configurado no arquivo configmap.yaml
           items:
-          - key: nginx.conf
-            path: nginx.conf
+          - key: nginx.conf #A key configurada no arquivo configmap.yaml logo abaixo da tag data
+            path: nginx.conf #Nome do arquivo que será gerado no volume quando montado
