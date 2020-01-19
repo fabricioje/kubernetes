@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: nginx-conf
 data:
-  nginx.config: |
+  nginx.conf: |
 
     server{
       listen 80;

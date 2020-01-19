@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metada:
+    name: nginx-service
+spec:
+    type: LoadBalancer
+    ports:
+        - port: 80
+    selector: Seleciona os pods que faram parte dele usando a chave e o valor, no caso a baixo a chave é app e o valor é nginx
+        app: hello-nginx #Seleciona o pod que fará parte dele
