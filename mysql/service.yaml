@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kink: Service
+apiVersion: v1
+kind: Service
 metadata: 
   name: mysql-service
 spec: #Especificação do service
@@ -8,4 +8,4 @@ spec: #Especificação do service
   selector: #Selector utilizado para criar o service
     app: mysql-server
     tier: db
-  clusterP: Nome #Não deixa que seja acessado externamente
+  clusterIP: None #Não deixa que seja acessado externamente

@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kink: Deployment
+kind: Deployment
 metadata: 
   name: mysql-server
 spec: #Especificação do deployment
@@ -15,12 +15,12 @@ spec: #Especificação do deployment
     labels: 
       app: mysql-server
       tier: db
-  spec: #spec do pod
-    cotainers:
+   spec: #spec do pod
+    containers:
     - image: mysql:5.7
-      name: mysql-server
+      name: mysql-server #Nome do container
       args:
-        -"--ignore-db-dir=lost+found" #Comenado para ignorar o arquivo lost found
+        - "--ignore-db-dir=lost+found" #Comenado para ignorar o arquivo lost found
       
       env: #Variáveis de ambiente
       - name: MYSQL_ROOT_PASSWORD
@@ -34,10 +34,10 @@ spec: #Especificação do deployment
       
       volumeMounts: #Monta o volume
       - name: mysql-persistent-storage
-      mounthPath: /var/lib/mysql
+        mountPath: /var/lib/mysql
     
 
     volumes: #definição do volume
     - name: mysql-persistent-storage
-      persistentVolumeCalim:
-        claimName: mysql-pdv-claim
+      persistentVolumeClaim:
+        claimName: mysql-pv-claim

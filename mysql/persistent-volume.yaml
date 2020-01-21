@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kink: PersistentVolumeClaim
+apiVersion: v1
+kind: PersistentVolumeClaim
 metadata: 
   name: mysql-pv-claim
 spec: #Especificação do deployment
@@ -8,3 +8,6 @@ spec: #Especificação do deployment
   resources:
     requests:
       storage: 20Gi
+
+#Comando para criar senha do mysql e armazenar no config.map
+#kubectl create secret generic mysql-pass --from-literal=password='a1s2d3f4'
