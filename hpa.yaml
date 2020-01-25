@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler #Com essa tag o kubernets sabe que esse arquivo é uma hpa
+metadata:
+    name: php-apache-hpa
+spec:
+    maxReplicas: 5 #Máximo de replicas rodando
+    minReplicas: 1 #Minimo de replicas rodando
+    scaleTargetRef: # Aonde esse configuração vai ser aplicada
+        apiVersion: extensions/v1beta1
+        kind: Deployment
+        name: php-apache-hpa  #Nome do pod que as configurações serão aplicadas
+    targetCPUUtilizationPercentage: 20 #Configura quando essa configuração irá ser aplicado, nesse caso quando a CPU passar de 20 porcento
